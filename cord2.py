@@ -4,7 +4,7 @@ out the coordinate of each row and column intersection.
 """
 import math as mt
 import numpy as np
-
+from readCellData import getData
 # Real coordinates of a rectangle.
 minX, maxX, minY, maxY = 529.871, 531.186, 179.576, 180.571
 stepSizeX = 1
@@ -39,15 +39,24 @@ if __debug__:
     print ("Total num of vertices: " + repr((stepCountX+1) * (stepCountY+1)))
     print ("Vertices: " + repr(vertices))
 
-### Using numpy functions.
-# Get all the equally spaced points along X and Y direction of the rectangle.
-cordX = np.linspace(minX, maxX, stepCountX+1)
-cordY = np.linspace(minY, maxY, stepCountY+1)
+# ### Using numpy functions.
+# # Get all the equally spaced points along X and Y direction of the rectangle.
+# cordX = np.linspace(minX, maxX, stepCountX+1)
+# cordY = np.linspace(minY, maxY, stepCountY+1)
+#
+# # Create a meshgrid which will have all the coordinates of intersection points.
+# cordX_All, cordY_All = np.meshgrid(cordX, cordY)
+#
+# if __debug__:
+#     print ("Total num of vertices: " + repr((stepCountX+1) * (stepCountY+1)))
+#     print ("X coordinates: \n" + repr(cordX_All))
+#     print ("Y coordinates: \n" + repr(cordY_All))
 
-# Create a meshgrid which will have all the coordinates of intersection points.
-cordX_All, cordY_All = np.meshgrid(cordX, cordY)
+# Read the data from the text file
+array2D = getData()
+# Print few samples from the text file
+for i in range(334738, 334750):
+    print array2D[i]
 
-if __debug__:
-    print ("Total num of vertices: " + repr((stepCountX+1) * (stepCountY+1)))
-    print ("X coordinates: \n" + repr(cordX_All))
-    print ("Y coordinates: \n" + repr(cordY_All))
+
+# Filter data ...
