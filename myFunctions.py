@@ -7,4 +7,15 @@ import math as mt
 
 
 def subList(a, b):
-    return [b[0]-a[0], b[1]-a[1]]
+    c = []
+    if len(a) == len(b):
+        for i in range(0,len(a)):
+            c.append(b[int(i)]-a[int(i)])
+        return c
+
+def dotProd(a, b):
+    c = 0
+    if len(a) == len(b):
+        for i in range(0, len(a)):
+            c += a[int(i)]*b[int(i)]
+        return c
