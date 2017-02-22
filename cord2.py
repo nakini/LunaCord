@@ -2,26 +2,29 @@
 Given four vertices of a rectangle and the row and column count, we are going to find
 out the coordinate of each row and column intersection.
 """
-import math
+import math as mt
 import numpy as np
 
 # Real coordinates of a rectangle.
-minX, maxX, minY, maxY = 531.186, 529.871, 179.576, 180.571
-stepCountX = 5
-stepCountY = 5
+minX, maxX, minY, maxY = 529.871, 531.186, 179.576, 180.571
+stepSizeX = 1
+stepSizeY = 1
+
 
 # Dummy coordinates of a rectangle.
-# minX,maxX,minY,maxY = 0.0, 2.0, 0.2, 2.2
-# stepCountX = 2
-# stepCountY = 2
+# minX,maxX,minY,maxY = 0.0, 2.0, 0.0, 2.0
+# stepSizeX = 1
+# stepSizeY = 1
 
 # Setp size along the rectangle edges in X and Y direction
-stepSizeX = (maxX - minX)/stepCountX
-stepSizeY = (maxY - minY)/stepCountY
+stepCountX = int(mt.ceil((maxX - minX)/stepSizeX))
+stepCountY = int(mt.ceil((maxY - minY)/stepSizeY))
 
 if __debug__:
     print ('Step size (X-dir): ' + repr(stepSizeX))
     print ('Step size (Y-dir): ' + repr(stepSizeY))
+    print ('Cell count (X-dir): ' + repr(stepCountX))
+    print ('Cell count (Y-dir): ' + repr(stepCountY))
 
 # Now, generate the coordinates of each intersection either using a nested for-loop or
 # using numpy in-built functions such as "linespace" and "meshgrid".
