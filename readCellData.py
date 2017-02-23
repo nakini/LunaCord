@@ -3,8 +3,8 @@ Here, we are going to read the coverage data.
 """
 
 # Open the file.
-fd = open("Copy of GSM900_Coverage by signal level.txt", 'r')
-# fd = open("testGSM.txt", 'r')
+# fd = open("Copy of GSM900_Coverage by signal level.txt", 'r')
+fd = open("testGSM.txt", 'r')
 
 # First, strip off the header. If possible extract the information from the header.
 for i in range(1,12):
@@ -32,8 +32,8 @@ for newLine in fd.readlines():
 # Close the file for good.
 fd.close()
 
-for i in range(334738, 334750):
-    print array2D[i]
+# for i in range(334738, 334750):
+#     print array2D[i]
 # print repr(array2D)
 
 def getData():

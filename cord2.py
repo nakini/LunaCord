@@ -8,9 +8,9 @@ from readCellData import getData
 from myFunctions import subList, dotProd
 
 # Real coordinates of a rectangle.
-minX, maxX, minY, maxY = 529.871, 531.186, 179.576, 180.571
-stepSizeX = 1
-stepSizeY = 1
+minX, maxX, minY, maxY = 492.000, 495.000, 139.000, 141.000
+stepSizeX = 0.1
+stepSizeY = 0.1
 
 
 # Dummy coordinates of a rectangle.
@@ -57,8 +57,8 @@ if __debug__:
 # Read the data from the text file
 array2D = getData()
 # Print few samples from the text file
-for i in range(334738, 334750):
-    print array2D[i]
+# for i in range(334738, 334750):
+#     print array2D[i]
 
 
 # Filter the grid coordinates.
@@ -72,14 +72,22 @@ A = [minX, minY]; B = [maxX, minY]; C = [maxX, maxY]; D = [minX, maxY]  # Vertic
 AB = subList(A, B); AD = subList(A, D)                                  # Vectors
 finalCellData = []
 for x in range(0,len(array2D)):
-    AM = subList(A, x[0:1])
+    cellXY = array2D[int(x)]
+    AM = subList(A, cellXY[0:2])
     ABM = dotProd(AB,AM)
     ABA = dotProd(AB,AB)
     ADM = dotProd(AD,AM)
     ADA = dotProd(AD,AD)
-    if (ABM<=0 & ABM<=ABA & ADM<= 0 & ADM<=ADA):
-        finalCellData.append(x)
+    print("ABM = "+repr(ABM))
+    print("ABA = "+repr(ABA))
+    print("ADM = "+repr(ADM))
+    print("ADA = "+repr(ADA))
+
+    if (0.0<=ABM and ABM<=ABA and 0.0<=ADM and ADM<=ADA):
+        print repr(cellXY)
+        finalCellData.append(cellXY)
 
 # Print the final list
+print ("number of points inside rectangle: "+repr(len(finalCellData)))
 for i in range(0,len(finalCellData)):
-    print i
+    print finalCellData[int(i)]
